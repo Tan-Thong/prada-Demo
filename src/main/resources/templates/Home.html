@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/assets/css/home.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/item.css}">
+    <title>Home</title>
+</head>
+<body>
+    <header th:replace="/fragments/header :: header"></header>
+
+    <div class="video-bg">
+        <video id="heroVideoBg" playsinline autoplay loop muted>
+            <source type="video/mp4"
+                    th:src="@{/assets/video/teaser-prada.mp4}">
+            <source type="video/webm"
+                    th:src="@{/assets/video/teaser-prada.mp4}">
+        </video>
+            
+        <div class="video-content">
+            <h2>Fashion is instant language.</h2>
+        </div>   
+    </div>
+
+    <div class="shop-fas">
+        <img th:src="@{/assets/image/men-shop.avif}" alt="shop-men" style="object-fit: cover;">
+        <div class="content">
+            <h2>Men's Collections</h2>
+            <a th:href="@{/men/ready-to-wear}">SHOP</a>
+        </div>  
+    </div>
+
+    <div class="shop-fas">
+        <img th:src="@{/assets/image/girl-shop.avif}" alt="shop-girl" style="object-fit: cover;">
+        <div class="content">
+            <h2>Women's Collections</h2>
+            <a th:href="@{/women/ready-to-wear}">SHOP</a>
+        </div>  
+    </div>
+
+    <div class="bag-shop">
+        <div class="women">
+            <img th:src="@{/assets/image/bag-women.avif}" alt="shop-girl" style="object-fit: cover;">
+            <div class="content">
+                <h2>Women's Bags</h2>
+                <a th:href="@{/women/bags}">SHOP</a>
+            </div>
+        </div>
+
+        <div class="men">
+            <img th:src="@{/assets/image/bag-men.jpg}" alt="shop-girl" style="object-fit: cover;">
+            <div class="content">
+                <h2>Men's Bags</h2>
+                <a th:href="@{/men/bags}">SHOP</a>
+            </div>
+        </div>    
+    </div>
+
+    <footer th:replace="/fragments/footer :: footer"></footer>
+
+    <div th:replace="/fragments/script :: script"></div>
+</body>
+</html>

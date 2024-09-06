@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/assets/css/home.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/item.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/item-detail.css}">
+    <title>Home</title>
+</head>
+<body>
+    <header th:replace="/fragments/header :: header"></header>
+
+    <div class="content">
+        <div class="detail">
+            <div class="img">
+                <img th:src="@{'/uploads/'+${product.image}}" alt="">
+                <i id="heartIcon" class="heart" th:classappend="${product.isLike} ? 'liked' : ''" th:data-item-id="${product.id}" th:data-is-liked="${product.isLike}"></i>
+            </div>
+            <div class="desc">
+                <form role="form" enctype="multipart/form-data">
+                    <h3 class="name-product" th:text="${product.name}"></h3>
+                    <p class="price" style="margin-top: 12px;">$ <span class="formattedNumber" th:text="${product.price}"></span></p>
+                    <div class="s-detail" style="display: flex; margin-top: 26px;">
+                        <p><b>Color</b></p>
+                        <p style="margin-left: 8px;" th:text="${product.color.name}">Alabaster Pink</p>
+                    </div>
+                    <div class="border" style="margin-top: 20px;">
+                        <div class="circle" th:style="'background-color:' + ${product.color.id}"></div>
+                    </div>
+                    <div class="s-detail" style="margin-top: 26px;">
+                        <p><b>Material</b></p>
+                        <p style="margin-top: 16px;" th:text="${product.material}">100% silk</p>
+                    </div>
+
+                    <div class="s-detail" style="margin-top: 26px;">
+                        <p><b>Details</b></p>
+                        <p style="margin-top: 16px;" th:text="${product.description}">This silk twill mini-dress has a shirt-dress silhouette brightened by a paisley print. Embellished with a refined bow collar, the style with simple yet sophisticated details is decorated with the iconic geometric shape of the fabric triangle logo. </p>
+                    </div>
+                    <a th:href="@{/add-to-cart/{id}(id=${product.id})}+'?quantity=1'" class="btn-submit">ADD TO SHOPPING BAG</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer th:replace="/fragments/footer :: footer"></footer>
+    <div th:replace="/fragments/script :: script"></div>
+</body>
+</html>

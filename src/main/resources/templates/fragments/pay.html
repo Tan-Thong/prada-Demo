@@ -1,0 +1,35 @@
+<div class="pay" th:fragment="pay">
+    <h3>Your order summary</h3>
+    <div class="view-item">
+        <button class="open-modal">View products (4 Items)</button>
+        <img th:src="@{/assets/image/right.png}" alt="" width="12px" style="margin-right: 8px;">
+    </div>
+
+    <div class="pay-total">
+        <div class="pay-total-session">
+            <p>Subtotal</p>
+            <p>$ 14,890.00</p>
+        </div>
+        <div class="pay-total-session">
+            <p>Standard shipping</p>
+            <p>Free</p>
+        </div>
+        <div class="pay-total-session">
+            <p>Taxes</p>
+            <p>$ 0.00</p>
+        </div>
+        <div class="total">
+            <h3>Total</h3>
+            <h3>$ 14,890.00</h3>
+        </div>
+    </div>
+    <div class="support">
+        <p style="margin-bottom: 12px;"><b>Need help? Contact us</b></p>
+        <p>
+            For information about products and online orders, please visit the <a href="https://example.com/faq">FAQ</a> section or contact our Client Service. You can also get help by filling out the form in the <a href="https://example.com/contact">Contact Us</a> section.
+        </p>
+
+        <p><a href="tel:1-877-997-7232">Call us at 1-877-997-7232</a></p>
+        <p><a href="">Chat with our Client Service</a></p>
+    </div>
+</div>

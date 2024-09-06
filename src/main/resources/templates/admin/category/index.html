@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/assets/css/admin.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/category.css}">
+    <title>Home</title>
+</head>
+<body>
+<header th:replace="/admin/fragments/header :: header"></header>
+
+<div class="main">
+    <div th:replace="/admin/fragments/sidebar :: sidebar"></div>
+
+    <div class="content" >
+        <h2>List Category</h2>
+
+        <div class="funtion">
+            <a th:href="@{/admin/add-category}" class="btn-add">Add category</a>
+            <form style="margin: 0; padding: 0;">
+                <div class="search" style="background: #fff">
+                    <input type="text" name="keyWord" id="txtSearch" th:value="${keyWord}">
+                    <button type="submit" class="btn-search"><img th:src="@{/assets/image/loupe.png}" alt="" height="20px" style="margin-top: 5px;"></button>
+                </div>
+            </form>
+        </div>
+
+        <table class="table">
+            <tr class="title">
+                <th>ID</th>
+                <th>CATEGORY NAME</th>
+                <th>CATEGORY PARENT</th>
+                <th>GENDER</th>
+                <th>ACTION</th>
+            </tr>
+            <tr th:each="category : ${list}">
+                <td th:text="${category.id}"></td>
+                <td th:text="${category.name}"></td>
+                <td th:if="${category.parent == null}">Null</td>
+                <td th:if="${category.parent != null}" th:text="${category.parent.name}"></td>
+                <td th:if="${category.gender == 1}">Male</td>
+                <td th:if="${category.gender == 2}">Female</td>
+                <td th:if="${category.gender == 3}">Both</td>
+                <td><a th:href="@{/admin/edit-category/{id}(id=${category.id})}" class="btn-update">Update</a>
+                    <a th:href="@{/admin/delete-category/{id}(id=${category.id})}" class="btn-delete">Delete</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

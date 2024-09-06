@@ -1,0 +1,68 @@
+.content {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    min-height: 450px;
+}
+
+.wish-list-null {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: calc(100vh - 255px);
+}
+
+.message {
+    font-size: 14px;
+    width: 480px;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+.heart {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 20px;
+    height: 20px;
+    background-image: url("/assets/image/hearh.png");
+    background-size: cover;
+    cursor: pointer;
+}
+
+.heart.liked {
+    background-image: url('/assets/image/hearh-black.png');
+    background-size: cover;
+}
+
+.btn-add {
+    font-size: 14px;
+    margin-top: 8px;
+    text-align: center;
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    color: #fff;
+    background: #000;
+    font-weight: 600;
+    border: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.btn-shopping {
+    display: block;
+    font-size: 14px;
+    margin: 0 auto;
+    margin-top: 24px;
+    text-align: center;
+    width: 195px;
+    line-height: 45px;
+    height: 45px;
+    color: #fff;
+    background: #000;
+    font-weight: 600;
+    border: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+}

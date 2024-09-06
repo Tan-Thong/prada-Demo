@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/assets/css/home.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/item.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/shopping-bag.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/add-to-bag.css}">
+    <title>Home</title>
+</head>
+<body>
+<header th:replace="/fragments/header :: header"></header>
+
+<div class="content">
+    <div class="bag">
+        <h4 style="padding: 20px; padding-bottom: 0;">Shopping bag (<span th:text="${listCartItem.size()}"></span>)</h4>
+        <div class="bag-null" th:if="${listCartItem.size()} == 0">
+            <div>
+                <p>Your shopping bag is empty</p>
+                <a th:href="@{/}" class="btn-shopping">CONTINUE SHOPPING</a>
+            </div>
+        </div>
+        <div class="bag-item" th:each="cartItem, iterStat : ${listCartItem}">
+            <img th:src="@{'/uploads/'+${cartItem.product.image}}" alt="">
+            <div style="padding-left: 20px; display: flex; justify-content: space-between; width: 100%;" class="detail">
+                <div style="display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <h4 style="padding-bottom: 2px; padding-top: 24px;" th:text="${cartItem.product.name}">Checked cotton mini-dress</h4>
+                        <p class="desc">Color: <span th:text="${cartItem.product.color.name}">Tobacco</span></p>
+                        <p class="desc">Material: <span th:text="${cartItem.product.material}">Cotton</span></p>
+                        <p class="desc">Quantity: <span th:text="${cartItem.quantity}">1</span></p>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn-action" style="margin-right: 24px;" th:data-modal="'modal' + ${iterStat.count}">Edit</button>
+                        <a th:href="@{/remove-to-cart/{id}(id=${cartItem.product.id})}" type="submit" class="btn-action">Remove</a>
+                    </div>
+                    <!-- Modal -->
+                    <div th:id="'modal' + ${iterStat.count}" class="modal" th:data-max-quantity="${cartItem.product.stock}">
+                        <div class="modal-content">
+                            <span class="close" th:data-modal="'modal' + ${iterStat.count}">&times;</span>
+                            <div class="detail">
+                                <img th:src="@{'/uploads/'+${cartItem.product.image}}" alt="">
+                                <div class="desc">
+                                    <div class="infor">
+                                        <p style="margin: 30px 0 10px 0;"><b th:text="${cartItem.product.name}">Printed silk twill mini-dress</b></p>
+                                        <p class="price" style="margin: 10px 0 22px 0;">$ <span class="formattedNumber" th:text="${cartItem.product.price}"></span></p>
+                                        <div class="s-detail" style="border-top: #ccc 1px solid;">
+                                            <p><b>Color:</b></p>
+                                            <div class="circle" th:style="'background-color:' + ${cartItem.product.color.id}"></div>
+                                            <p th:text="${cartItem.product.color.name}">Alabaster Pink</p>
+                                        </div>
+                                        <div class="s-detail">
+                                            <p><b>Material: </b><span th:text="${cartItem.product.material}">100% silk</span></p>
+                                        </div>
+                                        <div class="s-detail" style="justify-content: space-between;">
+                                            <p><b>Quantity: </b></p>
+                                            <div class="quantity">
+                                                <button type="button" id="decrement" th:data-modal="'modal' + ${iterStat.count}"><img th:src="@{./assets/image/minus.png}" alt=""></button>
+                                                <span id="quantity" name="quantity" th:text="${cartItem.quantity}">1</span>
+                                                <button type="button" id="increment" th:data-modal="'modal' + ${iterStat.count}"><img th:src="@{./assets/image/plus.png}" alt=""></button>
+                                            </div>
+                                        </div>
+                                        <div class="sub-desc">
+                                            <p style="height: 54px; line-height: 54px;"><b>Details:</b></p>
+                                            <p style="height: 110px; overflow: auto; padding-bottom: 20px;" th:text="${cartItem.product.description}">This silk twill mini-dress has a shirt-dress silhouette
+                                                brightened by a paisley print. Embellished with a refined bow collar, the style with
+                                                simple yet sophisticated details is decorated with the iconic geometric shape of the
+                                                fabric triangle logo. This silk twill mini-dress has a shirt-dress silhouette
+                                                brightened by a paisley print. Embellished with a refined bow collar, the style with
+                                                simple yet sophisticated details is decorated with the iconic geometric shape of the
+                                                fabric triangle logo.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="button">
+                                        <div class="btn-cancel" th:data-modal="'modal' + ${iterStat.count}">CANCEL</div>
+                                        <a th:href="@{/add-to-cart/{id}(id=${cartItem.product.id})}+'?quantity=1'" type="submit" class="btn-confirm">CONFIRM</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column; justify-content: space-between;">
+                    <p class="price" style="font-size: 16px; font-weight: 600; padding-top: 24px; text-align: right;">$ <span class="formattedNumber" th:text="${cartItem.price}"></span></p>
+                    <button type="submit" class="btn-action">Move to wishlist</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="subtotal">
+        <div class="sum">
+            <h4>Subtotal</h4>
+            <h4>$ <span class="formattedNumber" th:text="${total}"></span></h4>
+        </div>
+        <a class="btn-submit" th:href="@{checkout}" th:classappend="${listCartItem.size() == 0} ? 'button-disabled' : ''">PROCEED TO CHECKOUT</a>
+        <hr style="margin: 16px 0; color: #ddd;">
+        <div class="support">
+            <p><b>Need help? Contact us</b></p>
+            <p>
+                For information about products and online orders, please visit the <a href="https://example.com/faq">FAQ</a> section or contact our Client Service. You can also get help by filling out the form in the <a href="https://example.com/contact">Contact Us</a> section.
+            </p>
+            <p><a href="tel:1-877-997-7232">Call us at 1-877-997-7232</a></p>
+        </div>
+    </div>
+</div>
+
+<footer class="footer" style="max-height: 95px; display: flex; align-items: center; padding: 20px; margin: 0; border: none;">
+    <p style="font-size: 10px;">©PRADA 2007 - 2024</p>
+</footer>
+<div th:replace="/fragments/script :: script"></div>
+<div th:replace="/fragments/script-add-to-bag :: script-add"></div>
+</body>
+</html>

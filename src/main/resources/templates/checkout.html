@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/assets/css/checkout.css}">
+    <title>Home</title>
+</head>
+<body>
+    <div class="content">
+        <form role="form" method="post" th:action="@{/create-invoice}" th:object="${invoice}" class="info">
+            <a href="./shopping-bag" class="logo">
+                <img th:src="@{/assets/image/Prada-Logo.png}" alt="logo" width="110px">
+            </a>
+            <h3 style="padding-bottom: 24px;">Enter information to proceed with ordering</h3>
+            <div class="contact-info">
+                <p style="font-size: 10px;">Mandatory fields *</p>
+                <h4>Contact information</h4>
+                <p style="font-size: 14px;">levantanthong.2602@gmail.com</p>
+            </div>
+            <div class="shipping-address">
+                <h4>Shipping address</h4>
+                <div class="info-name">
+                    <input type="text" name="firstName" placeholder="First name*" class="input" th:field="*{firstName}">
+                    <input type="text" name="lastName" placeholder="Last name*" class="input" th:field="*{lastName}">
+                </div>
+                <input type="text" name="address" placeholder="Address*" class="input" th:field="*{address}">
+                <input type="text" name="message" placeholder="Message*" class="input" th:field="*{message}">
+                <input type="text" name="phone" placeholder="Phone number*" class="input" style="width: 375px;" th:field="*{phone}">
+                <div class="btn">
+                    <button type="submit" class="btn-submit">CONFIRM</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="pay" id="paySection">
+            <h3>Your order summary</h3>
+            <div class="view-item" onclick="showListItem()">
+                <p class="open-modal" >View products (<span th:text="${listCartItem.size()}"></span> Items)</p>
+                <img th:src="@{/assets/image/right.png}" alt="" width="12px" style="margin-right: 8px;">
+            </div>
+
+            <div class="pay-total">
+                <div class="pay-total-session">
+                    <p>Subtotal</p>
+                    <p>$ <span class="formattedNumber" th:text="${total}"></span></p>
+                </div>
+                <div class="pay-total-session">
+                    <p>Standard shipping</p>
+                    <p>Free</p>
+                </div>
+                <div class="pay-total-session">
+                    <p>Taxes</p>
+                    <p>$ 0.00</p>
+                </div>
+                <div class="total">
+                    <h3>Total</h3>
+                    <h3>$ <span class="formattedNumber" th:text="${total}"></span></h3>
+                </div>
+            </div>
+            <div class="support">
+                <p style="margin-bottom: 12px;"><b>Need help? Contact us</b></p>
+                <p>
+                    For information about products and online orders, please visit the <a href="https://example.com/faq">FAQ</a> section or contact our Client Service. You can also get help by filling out the form in the <a href="https://example.com/contact">Contact Us</a> section.
+                </p>
+
+                <p><a href="tel:1-877-997-7232">Call us at 1-877-997-7232</a></p>
+                <p><a href="">Chat with our Client Service</a></p>
+            </div>
+        </div>
+
+        <div class="list-item" id="listItemSection" style="display: none;">
+            <img src="./assets/image/close.png" alt="" width="14px" class="close" onclick="showPaySection()">
+            <div class="list">
+                <div class="item" th:each="cartItem, iterStat : ${listCartItem}">
+                    <img th:src="@{'/uploads/'+${cartItem.product.image}}" alt="" width="85px">
+                    <div class="item-info">
+                        <h5 th:text="${cartItem.product.name}">Embroidered sablé mini-dress</h5>
+                        <p th:text="${cartItem.product.color.name}">Black</p>
+                        <p>Qty: <span th:text="${cartItem.quantity}"></span></p>
+                        <p style="display: flex; justify-content: flex-end;"><b>$ <span class="formattedNumber" th:text="${cartItem.price}"></span></b></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!--        <div id="payFragment" th:replace="/fragments/pay :: pay" style="display: block;"></div>-->
+<!--        <div th:replace="/fragments/list-item :: list-item" style="display: block;"></div>-->
+    </div>
+    <footer class="footer" style="height: 95px; display: flex; align-items: center; padding: 20px; margin: 0;">
+        <p style="font-size: 10px;">©PRADA 2007 - 2024</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lấy giá từ phần tử span
+            var priceElements = document.querySelectorAll('.formattedNumber');
+            // Lặp qua từng phần tử và định dạng giá
+            priceElements.forEach(function(priceElement) {
+                // Lấy giá từ nội dung của phần tử
+                var price = parseFloat(priceElement.textContent);
+
+                // Định dạng giá
+                var formattedPrice = price.toLocaleString('en-US');
+
+                // Cập nhật giá đã định dạng vào phần tử
+                priceElement.textContent = formattedPrice;
+            });
+        });
+
+        function showListItem() {
+            document.getElementById('paySection').style.display = 'none';
+            document.getElementById('listItemSection').style.display = 'block';
+        }
+
+        function showPaySection() {
+            document.getElementById('listItemSection').style.display = 'none';
+            document.getElementById('paySection').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

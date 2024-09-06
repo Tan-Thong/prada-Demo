@@ -1,0 +1,99 @@
+<div th:fragment="script">
+    <script>
+        // Get the modal
+        var modalBag = document.getElementById("modalBag");
+
+        // Get the button that opens the modal
+        var btnBag = document.getElementById("btnBag");
+
+        // Get the <span> element that closes the modal
+        var span1 = document.getElementsByClassName("closeBag")[0];
+
+        // When the user clicks the button, open the modal
+
+        btnBag.onclick = function() {
+            modalBag.style.display = "block";
+            document.body.classList.add('hidden-scroll');
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span1.onclick = function() {
+            modalBag.style.display = "none";
+            document.body.classList.remove('hidden-scroll');
+            btnSearch.classList.remove("disabled-button");
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+
+        window.onclick = function(event) {
+            if (event.target == modalBag) {
+                modalBag.style.display = "none";
+                document.body.classList.remove('hidden-scroll');
+                btnSearch.classList.remove("disabled-button");
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lấy giá từ phần tử span
+            var priceElements = document.querySelectorAll('.formattedNumber');
+            // Lặp qua từng phần tử và định dạng giá
+            priceElements.forEach(function(priceElement) {
+                // Lấy giá từ nội dung của phần tử
+                var price = parseFloat(priceElement.textContent);
+
+                // Định dạng giá
+                var formattedPrice = price.toLocaleString('en-US');
+
+                // Cập nhật giá đã định dạng vào phần tử
+                priceElement.textContent = formattedPrice;
+            });
+        });
+
+        function submitForm() {
+            document.getElementById('favoriteForm').submit();
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.wishListHeart').forEach(function(heart) {
+                heart.addEventListener('click', function(event) {
+                    event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ a nếu cần
+                    event.stopPropagation(); // Ngăn chặn sự kiện lan truyền lên các phần tử cha và xử lý các sự kiện khác
+
+                    const heartElement = event.target;
+                    const wishItemId = heartElement.getAttribute('data-wish-item-id');
+                    const wishIsLiked = heartElement.classList.contains('liked');
+                    const url = `/wish-list/${wishItemId}`;
+                    const method = isLiked ? 'DELETE' : 'POST';
+                    const newWishIsLiked = !wishIsLiked;
+
+                    fetch(url, {
+                        method: method,
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ wishIsLiked: newWishIsLiked })
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            heartElement.classList.toggle('liked');
+                            heartElement.setAttribute('data-wish-is-liked', newWishIsLiked);
+                        } else {
+                            console.error('Failed to update wishlist');
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+                });
+            });
+
+            document.querySelectorAll('a').forEach(function(anchor) {
+                anchor.addEventListener('click', function(event) {
+                    // Kiểm tra nếu phần tử nhấp vào không phải là .wishListHeart
+                    if (event.target.closest('.wishListHeart')) {
+                        event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ a nếu nhấp vào wishListHeart
+                        event.stopPropagation();
+                    }
+                });
+            });
+        });
+    </script>
+</div>

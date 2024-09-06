@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/assets/css/home.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/item.css}">
+    <title>Search</title>
+</head>
+<body>
+    <div style="padding: 0 20px">
+        <form id="favoriteForm" method="get" action="" style="border-bottom: #000 1px solid; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <input type="text" name="keyWord" id="txtSearch" placeholder="Search on Prada.com" onchange="submitForm()">
+            <a th:href="@{${apiGoBack}}" onclick="goBack()" class="close"><u>CLOSE</u></a>
+        </form>
+        <div class="shop">
+            <div class="product" th:each="product : ${list}">
+                <a th:href="@{/item-detail/{id}(id=${product.id})}">
+                    <div class="img">
+                        <img th:src="@{'/uploads/'+${product.image}}" alt="">
+                    </div>
+                    <div class="desc" style="padding-left: 8px;">
+                        <h5 style="padding: 5px 0;" th:text="${product.name}"></h5>
+                        <p class="price" style="font-size: 14px;">$ <span class="formattedNumber" th:text="${product.price}"></span></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/assets/css/home.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/profile.css}">
+    <title>Home</title>
+</head>
+<body>
+<header th:replace="/fragments/header :: header"></header>
+
+<div class="main">
+    <div class="nav">
+        <div style="padding-left: 24px;">
+            <h2 style="margin-bottom: 12px;">Have a nice day!</h2>
+            <p style="font-size: 10px; color: #8c8c8c;">WELCOME TO YOUR PERSONAL AREA</p>
+        </div>
+        <a th:href="@{/logout}" class="log-out">
+            <p style="height: 20px; line-height: 20px;"><b>Log Out</b></p>
+            <img th:src="@{/assets/image/sign-out.png}" alt="" width="20px">
+        </a>
+    </div>
+    <div class="info">
+        <div class="head">
+            <h2 style="margin-bottom: 14px;">Personal information</h2>
+            <p style="font-size: 14px; color: #8c8c8c;">Manage your personal details, shipping information and payment methods.</p>
+        </div>
+        <div class="info-container">
+            <div class="info-main">
+                <div class="edit-info">
+                    <h4 style="padding-top: 2px; line-height: 20px;">PERSONAL DETAILS</h4>
+                    <img th:src="@{/assets/image/pen.png}" alt="" width="20px" id="edit-info">
+                    <div id="modal-info">
+                        <div class="modal-info-content">
+                            <span class="close" id="close-info">&times;</span>
+                            <form method="post" th:action="@{/update-user}">
+                                <input type="hidden" name="userId" id="txtId" class="input" th:value="${user.id}">
+                                <h3 style="margin-top: 60px; margin-bottom: 16px;">Personal details</h3>
+                                <p style="font-size: 14px; margin-bottom: 30px;">Manage your account details.</p>
+                                <div class="input-main">
+                                    <div class="input-section">
+                                        <label for="txtFirstname">Full name*</label>
+                                        <input type="text" name="fullName" id="txtFirstname" class="input" th:value="${user.fullName}">
+                                    </div>
+                                    <div class="input-section">
+                                        <label for="txtEmail">Email*</label>
+                                        <input type="text" name="email" id="txtEmail" class="input" th:value="${user.email}">
+                                    </div>
+                                </div>
+
+                                <div class="input-section">
+                                    <label for="txtAddress">Address*</label>
+                                    <input type="text" name="address" id="txtAddress" class="input" style="width: 100%" th:value="${user.address}">
+                                </div>
+
+                                <div class="input-section">
+                                    <label for="txtPhone">Phone number*</label>
+                                    <input type="text" name="phone" id="txtPhone" class="input" th:value="${user.phone}">
+                                </div>
+
+                                <div style="display: flex; justify-content: flex-end;">
+                                    <button type="submit" class="btn-submit">CONFIRM</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <p class="name"><b style="text-transform: uppercase;" th:text="${user.fullName}">THONG LE</b></p>
+                <div class="info-section">
+                    <p class="label"><b>ADDRESS</b></p>
+                    <p th:text="${user.address}">Cu Chi, Ho Chi Minh</p>
+                </div>
+                <div class="info-section">
+                    <p class="label"><b>PHONE</b></p>
+                    <p>+84 <span th:text="${user.phone}">0348807764</span></p>
+                </div>
+                <div class="info-section">
+                    <p class="label"><b>EMAIL</b></p>
+                    <p th:text="${user.email}">levantanthong.2602@gmail.com</p>
+                </div>
+                <div class="info-section">
+                    <div style="display: flex; justify-content: space-between;">
+                        <p class="label"><b>PASSWORD</b></p>
+                        <img th:src="@{/assets/image/pen.png}" alt="" width="20px" height="20px" id="edit-password">
+                        <!-- Modal password -->
+                        <div id="modal-password">
+                            <div class="modal-pasword-content">
+                                <span class="close" id="close-password">&times;</span>
+                                <h3 style="margin-top: 60px; margin-bottom: 16px;">Change your password</h3>
+                                <p style="font-size: 12px; margin-bottom: 20px;">With this password you will be able to access your personal area.</p>
+                                <input type="text" name="" placeholder="Current password*" class="input" style="margin-bottom: 15px;">
+                                <div class="input-main">
+                                    <input type="text" name="" placeholder="New password*" class="input">
+                                    <input type="text" name="" placeholder="Confirm new password*" class="input">
+                                </div>
+                                <p style="font-size: 10px; margin-bottom: 40px;">The password must be composed of 8 to 16 characters</p>
+
+                                <div style="display: flex; justify-content: flex-end;">
+                                    <button type="submit" class="btn-confirm">CONFIRM</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p>*************</p>
+                </div>
+            </div>
+
+            <div class="history">
+                <h4 style="padding-top: 2px; line-height: 20px;">PURCHASE HISTORY</h4>
+                <div class="table-container">
+                    <table class="table">
+                        <tr class="title">
+                            <th>ID</th>
+                            <th>RECEIVER</th>
+                            <th>DATE</th>
+                            <th>TOTAL</th>
+                            <th>VIEW</th>
+                        </tr>
+                        <tr th:each="invoice, iterStat : ${listInvoice}">
+                            <td th:text="${invoice.id}">1</td>
+                            <td><span th:text="${invoice.lastName}">Le</span> <span th:text="${invoice.firstName}">Thong</span></td>
+                            <td th:text="${invoice.invoiceDate}">24/08/2024</td>
+                            <td>$ <span class="formattedNumber" th:text="${invoice.totalAmount}"></span></td>
+                            <td><div class="btn-view" th:data-modal="'modal' + ${iterStat.count}" style="cursor: pointer;">Detais</div></td>
+                            <div class="modal"  th:id="'modal' + ${iterStat.count}">
+                                <div class="modal-content">
+                                    <span class="close" th:data-modal="'modal' + ${iterStat.count}">&times;</span>
+                                    <h3 style="margin-top: 60px; margin-bottom: 16px;">Order details</h3>
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <p style="font-size: 12px; margin-bottom: 20px;"><b>Receiver: </b><span th:text="${invoice.lastName}">Le</span> <span th:text="${invoice.firstName}">Thong</span></p>
+                                        <p style="font-size: 12px; margin-bottom: 20px;"><b>Phone: </b><span th:text="${invoice.phone}">0348807764</span></p>
+                                        <p style="font-size: 12px; margin-bottom: 20px;"><b>Total amount: </b>$ <span class="formattedNumber" th:text="${invoice.totalAmount}"></span></p>
+                                    </div>
+                                    <p style="font-size: 12px; margin-bottom: 20px;"><b>Address: </b><span th:text="${invoice.address}">Ho Chi Minh</span></p>
+                                    <p style="font-size: 12px; margin-bottom: 20px;"><b>Message: </b><span th:text="${invoice.message}">Null</span></p>
+                                    <div class="list-item">
+                                        <img th:src="@{/assets/image/close.png}" alt="" width="14px" class="close">
+                                        <div class="list">
+                                            <div class="item" th:each="invoiceItem : ${invoice.invoiceItems}">
+                                                <img th:src="@{'/uploads/'+${invoiceItem.product.image}}" alt="" width="85px">
+                                                <div class="item-info">
+                                                    <h5 th:text="${invoiceItem.product.name}">Embroidered sablé mini-dress</h5>
+                                                    <p th:text=${invoiceItem.product.color.name}>Black</p>
+                                                    <p>Qty: <span th:text=${invoiceItem.quantity}></span></p>
+                                                    <p style="display: flex; justify-content: flex-end;"><b>$ <span class="formattedNumber" th:text="${invoiceItem.price}"></span></b></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div th:replace="/fragments/script :: script"></div>
+<div th:replace="/fragments/script-profile :: script"></div>
+</body>
+</html>

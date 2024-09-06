@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: a;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+    height: 100vh;
+}
+
+a {
+    position: relative;
+    color: #000;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+header {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: #ddd 2px solid;
+}
+
+.main {
+    display: flex;
+}
+
+.side-bar {
+    display: block;
+    width: 250px;
+    height: calc(100vh - 50px);
+    background: #eee;
+    z-index: 1;
+}
+
+.category {
+    height: 60px;
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: #ddd 2px solid;
+}
+
+.category a {
+    line-height: 28px;
+    display: block;
+    height: 28px;
+}
+
+.content {
+    padding: 20px;
+    height: calc(100vh - 50px);
+    width: calc(100% - 250px);
+    overflow: auto;
+}
+
+.funtion {
+    display: flex;
+    justify-content: space-between;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search input {
+    padding: 0 10px;
+    height: 30px;
+    width: 200px;
+    border-radius: 20px 0 0 20px;
+    border: #000 1px solid;
+}
+
+.btn-add {
+    margin: 10px 0;
+    text-align: center;
+    display: block;
+    line-height: 30px;
+    height: 30px;
+    width: 120px;
+    color: #fff;
+    background: #198754;
+    border-radius: 4px;
+}
+
+.btn-search {
+    margin: 10px 0;
+    text-align: center;
+    display: block;
+    line-height: 30px;
+    height: 30px;
+    width: 50px;
+    color: #fff;
+    background: #ddd;
+    border-radius: 0 20px 20px 0;
+    border: #000 1px solid;
+    border-left: none;
+}
+
+.btn-update {
+    margin: 10px auto;
+    text-align: center;
+    display: block;
+    line-height: 30px;
+    height: 30px;
+    width: 80px;
+    color: #fff;
+    background: #0077b6;
+    border-radius: 4px;
+}
+
+.btn-delete {
+    margin: 10px auto;
+    text-align: center;
+    display: block;
+    line-height: 30px;
+    height: 30px;
+    width: 80px;
+    color: #fff;
+    background: #db3545;
+    border-radius: 4px;
+}
+
+.table {
+    text-align: center;
+    border: #ddd 1px solid;
+    border-collapse:collapse;
+    width: 100%;
+}
+
+.table .title {
+    height: 50px;
+    background: #bbb;
+}
+
+.table th, .table td {
+    padding: 10px 20px;
+}
+
+.table tr {
+    border-bottom: #ddd 1px solid
+}
+
+.circle {
+    margin: auto;
+    background: #000;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.hide {
+    width: 0;
+}

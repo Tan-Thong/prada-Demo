@@ -1,0 +1,326 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main {
+    display: flex;
+    padding: 0;
+    margin-top: 50px;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #f7f7f7;
+    width: 355px;
+    height: calc(100vh - 50px);
+    padding-top: 35px;
+    border-right: 1px #ddd solid;
+}
+
+.nav .log-out {
+    display: flex;
+    justify-content: space-between;
+    padding: 22px 24px;
+    font-size: 14px;
+    border-top: 1px #ddd solid;
+}
+
+.nav .log-out:hover {
+    cursor: pointer;
+    background-color: #d9dce0;
+}
+
+.info {
+    width: calc(100% - 355px);
+}
+
+.info .head {
+    height: 105px;
+    padding: 0 100px;
+    padding-top: 26px;
+    border-bottom: 1px #ddd solid;
+}
+
+.info-container {
+    display: flex;
+}
+
+.info-main {
+    height: calc(100vh - 155px);
+    width: 500px;
+    padding: 52px 100px;
+    padding-right: 70px;
+    border-right: 1px #ddd solid;
+}
+
+.edit-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-main .name {
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+.info-section {
+    font-size: 14px;
+    padding: 20px 0;
+}
+
+.info-section .label {
+    margin-bottom: 12px;
+}
+
+.info .history {
+    width: calc(100% - 500px);
+    padding: 52px 70px;
+}
+
+.table-container {
+    margin-top: 20px;
+    height: 385px;
+    overflow: auto;
+}
+
+.table {
+    font-size: 14px;
+    text-align: center;
+    border: #ddd 1px solid;
+    border-collapse:collapse;
+    width: 100%;
+    overflow: auto;
+}
+
+/* .table .title {
+    height: 50px;
+    background: #bbb;
+} */
+
+.table th, .table td {
+    padding: 8px 16px;
+}
+
+.table tr {
+    border-bottom: #ddd 1px solid
+}
+
+.btn-view {
+    margin: 5px auto;
+    font-size: 12px;
+    text-align: center;
+    display: block;
+    line-height: 20px;
+    height: 20px;
+    width: 50px;
+    color: #fff;
+    background: #000;
+    border-radius: 4px;
+}
+
+
+
+/* modal info */
+
+#modal-info {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    z-index: 100;
+    align-items: center;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-info-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    border: 1px solid #888;
+    width: 735px;
+    height: 580px;
+    padding: 0 40px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #000;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 30px;
+    margin: 10px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.input {
+    padding: 0 20px;
+    width: 315px;
+    height: 55px;
+    border: #000 1px solid;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    border-radius: 4px;
+}
+
+.input-main {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-section label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.btn-submit {
+    display: block;
+    font-size: 14px;
+    line-height: 45px;
+    text-align: center;
+    width: 140px;
+    height: 45px;
+    color: #fff;
+    background: #000;
+    font-weight: 600;
+    border: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+#edit-info, #edit-password {
+    cursor: pointer;
+}
+
+
+/* Modal pasword */
+
+#modal-password {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    z-index: 100;
+    align-items: center;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-pasword-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    border: 1px solid #888;
+    width: 600px;
+    height: 450px;
+    padding: 0 40px;
+}
+
+.modal-pasword-content .input {
+    width: 250px;
+    border-radius: 0px;
+}
+
+.modal-pasword-content .input-main .input {
+    margin-bottom: 8px;
+}
+
+.modal-pasword-content .input {
+    width: 250px;
+    border-radius: 0px;
+}
+
+.modal-pasword-content .btn-confirm {
+    text-align: center;
+    width: 180px;
+    height: 55px;
+    color: #fff;
+    background: #000;
+    font-weight: 600;
+    border: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+
+/* Modal details */
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    z-index: 100;
+    align-items: center;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    border: 1px solid #888;
+    width: 600px;
+    height: 550px;
+    padding: 0 40px;
+}
+
+.list-item {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0px;
+    padding-top: 15px;
+    /* height: 500px; */
+}
+
+.list-item .list {
+    width: 100%;
+    height: 300px;
+    overflow: auto;
+    -ms-overflow-style: none; /* Ẩn thanh cuộn trên IE và Edge */
+    scrollbar-width: none; /* Ẩn thanh cuộn trên Firefox */
+}
+
+.list-item .item {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.item-info {
+    width: 100%;
+    margin-left: 18px;
+}
+
+.item-info > p{
+    font-size: 14px;
+    margin-top: 14px;
+}

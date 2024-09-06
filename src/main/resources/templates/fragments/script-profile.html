@@ -1,0 +1,63 @@
+<div th:fragment="script">
+    <script>
+        // Get the modal info and password
+        var modalInfo = document.getElementById("modal-info");
+        var modalPassword = document.getElementById("modal-password");
+
+        // Get the button that opens the modal
+        var btnInfo = document.getElementById("edit-info");
+        var btnPassword = document.getElementById("edit-password");
+
+        // Get the <span> element that closes the modal
+        var closeInfo = document.getElementById("close-info");
+        var closePassword = document.getElementById("close-password");
+
+        // When the user clicks the button, open the modal
+        btnInfo.onclick = function() {
+            modalInfo.style.display = "flex";
+        }
+
+        btnPassword.onclick = function() {
+            modalPassword.style.display = "flex";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        closeInfo.onclick = function() {
+            modalInfo.style.display = "none";
+        }
+
+        closePassword.onclick = function() {
+            modalPassword.style.display = "none";
+        }
+
+        // Modal details
+        // Function to toggle modal display
+        function toggleModal(modalId, displayStyle) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = displayStyle;
+            } else {
+                console.error('No modal found with ID:', modalId);
+            }
+        }
+
+        // Event listener for opening and closing modals using event delegation
+        document.addEventListener('click', function (event) {
+            if (event.target.matches('.btn-view[data-modal]')) {
+                // Open modal
+                const modalId = event.target.getAttribute('data-modal');
+                toggleModal(modalId, 'flex');
+                document.body.classList.add('hidden-scroll');
+            } else if (event.target.matches('.close[data-modal]')) {
+                // Close modal when clicking on <span> (x)
+                const modalId = event.target.getAttribute('data-modal');
+                toggleModal(modalId, 'none');
+                document.body.classList.remove('hidden-scroll');
+            } else if (event.target.matches('.modal')) {
+                // Close modal when clicking outside of modal content
+                event.target.style.display = 'none';
+                document.body.classList.remove('hidden-scroll');
+            }
+        });
+    </script>
+</div>

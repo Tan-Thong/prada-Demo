@@ -1,0 +1,195 @@
+<header class="header" th:fragment="header">
+    <!-- Logo -->
+    <a th:href="@{/}" class="logo">
+        <img th:src="@{/assets/image/Prada-Logo.png}" alt="logo" width="130px">
+    </a>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <ul class="menu">
+                <li><a class="hover">WOMEN</a>
+                    <div class="sub-menu">
+                        <div class="session">
+                            <div>
+                                <h4>READY TO WEAR</h4>
+                                <ul>
+                                    <li><a th:href="@{${apiClothesWomen}}">View all</a></li>
+                                    <li th:each="category : ${listCategoryClothesWomen}"><a th:href="@{${apiClothesWomen} + '/' + ${@thymeleafUtility.formatCategoryName(category.name)}}" th:text="${category.name}"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="session">
+                            <div>
+                                <h4>BAGS</h4>
+                                <ul>
+                                    <li><a th:href="@{${apiBagWomen}}">View all</a></li>
+                                    <li th:each="category : ${listCategoryBagWomen}"><a th:href="@{${apiBagWomen} + '/' + ${@thymeleafUtility.formatCategoryName(category.name)}}" th:text="${category.name}"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="session">
+                            <div>
+                                <h4>SHOES</h4>
+                                <ul>
+                                    <li><a th:href="@{${apiShoesWomen}}">View all</a></li>
+                                    <li th:each="category : ${listCategoryShoesWomen}"><a th:href="@{${apiShoesWomen} + '/' + ${@thymeleafUtility.formatCategoryName(category.name)}}" th:text="${category.name}"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="session"  style="margin-right: 10px;">
+                            <img th:src="@{/assets/image/background-girl.avif}" alt="" class="background">
+                        </div>
+                        <div class="session">
+                            <img th:src="@{/assets/image/background-girl-2.avif}" alt="" height="200px">
+                        </div>
+                    </div>
+                </li>
+                <li><a class="hover">MEN</a>
+                    <div class="sub-menu">
+                        <div class="session">
+                            <div>
+                                <h4>READY TO WEAR</h4>
+                                <ul>
+                                    <li><a th:href="@{${apiClothesMen}}">View all</a></li>
+                                    <li th:each="category : ${listCategoryClothesMen}"><a th:href="@{${apiClothesMen} + '/' + ${@thymeleafUtility.formatCategoryName(category.name)}}" th:text="${category.name}"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="session">
+                            <div>
+                                <h4>BAGS</h4>
+                                <ul>
+                                    <li><a th:href="@{${apiBagMen}}">View all</a></li>
+                                    <li th:each="category : ${listCategoryBagMen}"><a th:href="@{${apiBagMen} + '/' + ${@thymeleafUtility.formatCategoryName(category.name)}}" th:text="${category.name}"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="session">
+                            <div>
+                                <h4>SHOES</h4>
+                                <ul>
+                                    <li><a th:href="@{${apiShoesMen}}">View all</a></li>
+                                    <li th:each="category : ${listCategoryShoesMen}"><a th:href="@{${apiShoesMen} + '/' + ${@thymeleafUtility.formatCategoryName(category.name)}}" th:text="${category.name}"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="session"  style="margin-right: 10px;">
+                            <img th:src="@{/assets/image/background-men.avif}" alt="" class="background">
+                        </div>
+                        <div class="session">
+                            <img th:src="@{/assets/image/background-men-2.avif}" alt="" height="200px">
+                        </div>
+                    </div>
+                </li>
+                <li><a class="hover">BAGS</a>
+                    <div class="sub-menu">
+                        <div class="session">
+                            <img th:src="@{/assets/image/bags_girl.avif}" alt="" height="200px">
+                        </div>
+                        <div class="session">
+                            <div>
+                                <h4>WOMEN'S BAGS</h4>
+                                <ul>
+                                    <li><a th:href="@{${apiBagWomen}}">View all</a></li>
+                                    <li th:each="category : ${listCategoryBagWomen}"><a th:href="@{${apiBagWomen} + '/' + ${@thymeleafUtility.formatCategoryName(category.name)}}" th:text="${category.name}"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="session">
+                            <img th:src="@{/assets/image/bags-men.avif}" alt="" height="200px">
+                        </div>
+                        <div class="session">
+                            <div>
+                                <h4>MEN'S BAGS</h4>
+                                <ul>
+                                    <li><a th:href="@{${apiBagMen}}">View all</a></li>
+                                    <li th:each="category : ${listCategoryBagMen}"><a th:href="@{${apiBagMen} + '/' + ${@thymeleafUtility.formatCategoryName(category.name)}}" th:text="${category.name}"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li><a class="hover">SHOES</a>
+                    <div class="sub-menu">
+                        <div class="session">
+                            <img th:src="@{/assets/image/shoes-girl.avif}" alt="" height="200px">
+                        </div>
+                        <div class="session">
+                            <div>
+                                <h4>WOMEN'S SHOES</h4>
+                                <ul>
+                                    <li><a th:href="@{${apiShoesWomen}}">View all</a></li>
+                                    <li th:each="category : ${listCategoryShoesWomen}"><a th:href="@{${apiShoesWomen} + '/' + ${@thymeleafUtility.formatCategoryName(category.name)}}" th:text="${category.name}"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="session">
+                            <img th:src="@{/assets/image/shoes-men.avif}" alt="" height="200px">
+                        </div>
+                        <div class="session">
+                            <div>
+                                <h4>MEN'S SHOES</h4>
+                                <ul>
+                                    <li><a th:href="@{${apiShoesMen}}">View all</a></li>
+                                    <li th:each="category : ${listCategoryShoesMen}"><a th:href="@{${apiShoesMen} + '/' + ${@thymeleafUtility.formatCategoryName(category.name)}}" th:text="${category.name}"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="icons">
+            <a th:href="@{/search}">
+                <img th:src="@{/assets/image/loupe.png}" alt="" width="20px">
+            </a>
+            <a href="/profile">
+                <img th:src="@{/assets/image/user.png}" alt="" width="20px">
+            </a>
+            <a th:href="@{/wish-list}">
+                <img th:src="@{/assets/image/like.png}" alt="" width="20px">
+            </a>
+            <div>
+                <img th:src="@{/assets/image/bag.png}" alt="" width="20px" id="btnBag">
+                <div id="modalBag" class="modal-bag">
+                    <div class="modal-content-bag">
+                        <div class="container">
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding-right: 20px; padding-bottom: 30px;">
+                                <h3 th:if="${listCartItem != null}">Your selection (<span th:text="${listCartItem.size()}"></span>)</h3>
+                                <h3 th:unless="${listCartItem != null}">Your selection (0)</h3>
+                                <img th:src="@{/assets/image/close.png}" alt="" width="24px" class="closeBag">
+                            </div>
+                            <div class="bag-list">
+                                <div class="bag-item" th:each="cartItem : ${listCartItem}">
+                                    <a th:href="@{/item-detail/{id}(id=${cartItem.product.id})}">
+                                        <img th:src="@{'/uploads/'+${cartItem.product.image}}" alt="">
+                                    </a>
+                                    <div style="padding-left: 20px;">
+                                        <h3>Checked cotton mini-dress</h3>
+                                        <p class="desc">Color: <span th:text="${cartItem.product.color.name}">Tobacco</span></p>
+                                        <p class="desc">Material: <span th:text="${cartItem.product.material}">Cotton</span></p>
+                                        <p class="desc">Qty: <span th:text="${cartItem.quantity}">1</span></p>
+                                        <p class="price" style="font-size: 15px;">$ <span class="formattedNumber" th:text="${cartItem.price}"></span></p>
+                                        <a th:href="@{/remove-to-cart/{id}(id=${cartItem.product.id})}" type="submit" class="btn-remove">Remove</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="total">
+                                    <h3>Subtotal</h3>
+                                    <h3>$ <span class="formattedNumber" th:text="${total}"></span></h3>
+                                </div>
+                                <div class="action">
+                                    <a th:href="@{/shopping-bag}" class="btn-shopping-bag">GO TO SHOPPING BAG</a>
+                                    <a th:href="@{/checkout}" class="btn-checkout"  th:classappend="${listCartItem.size() == 0} ? 'button-disabled' : ''">PROCEED TO CHECKOUT</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

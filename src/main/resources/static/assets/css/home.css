@@ -1,0 +1,525 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.button-disabled {
+    pointer-events: none; /* Vô hiệu hóa tất cả các sự kiện chuột */
+    opacity: 0.6; /* Làm nút mờ đi để người dùng biết nó bị tắt */
+    cursor: not-allowed; /* Thay đổi con trỏ thành biểu tượng không được phép */
+}
+
+.disabled-button {
+    pointer-events: none;
+    cursor: default !important;
+}
+
+body.hidden-scroll {
+    overflow: hidden;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: a;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    position: relative;
+    color: #000;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+/* Header */
+.header {
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    font-size: 1.6rem;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background-color: #ffffff;
+    border-bottom: #ddd 1px solid;
+}
+
+.logo {
+    padding: 0 20px;
+    padding-top: 4px;
+}
+
+.header .navbar {
+    position: relative;
+    display: flex;
+    width: 100%;
+    font-weight: 600;
+    font-size: 1.2rem;
+    line-height: 22px;
+    justify-content: space-between;
+    padding-left: 80px;
+    padding-right: 20px;
+}
+
+.menu {
+    display: flex;
+}
+
+.menu > li {
+    height: 50px;
+    line-height: 50px;
+    padding: 0 10px;
+}
+
+.menu li .hover{
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+.menu li:hover .hover {
+    border-bottom: #000 1px solid;
+}
+
+.menu li:hover .sub-menu {
+    display: flex;
+}
+
+.sub-menu {
+    position: absolute;
+    display: none;
+    color: #ccc;
+    background-color: #fff;
+    min-height: 220px;
+    width: calc(100% + 170px);
+    top: 50px;
+    left: -170px;
+    border-top: #ddd 1px solid;
+}
+
+.sub-menu > .session:first-child{
+    padding-left: 30px;
+    margin-left: 200px;
+}
+
+.sub-menu > .session {
+    margin-right: 80px;
+}
+
+.sub-menu .session img {
+    padding-top: 20px ;
+}
+
+.background {
+    height: 200px;
+    width: 370px;
+    object-fit: cover;
+}
+
+.sub-menu li {
+    width: 150px;
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+
+.sub-menu li:hover a{
+    opacity: 0.5;
+}
+
+.sub-menu h4 {
+    margin-top: 10px;
+    color: #000;
+}
+
+.sub-menu a {
+    font-weight: 400;
+    line-height: 20px;
+    color: #555;
+}
+
+.header .icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 4px;
+    width: 150px;
+    color: #fff;
+}
+
+.icons > * {
+    cursor: pointer;
+}
+
+/* Content */
+video {
+    width: calc(100% - 40px);
+    height: calc(100vh - 70px);
+    position: relative;
+    top: 70px;
+    left: 20px;
+    right: 20px;
+    object-fit: cover;
+    z-index: -1000;
+}
+
+.video-bg {
+    width: 100%;
+    height: 100vh;
+}
+
+
+.video-content {
+    position: absolute;
+    top: 90px;
+    left: 40px;
+    font-weight: 800;
+    margin: auto;
+    color: #fff;
+}
+
+.video-content h2 {
+    font-size: 2.2rem;
+}
+
+/* shop */
+.shop-fas {
+    position: relative;
+}
+
+.shop-fas .content {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    font-weight: 800;
+    margin: auto;
+    color: #000;
+}
+
+.shop-fas h2 {
+    padding-bottom: 10px;
+}
+
+.shop-fas a {
+    font-size: 1.2;
+    line-height: 2.4;
+    font-weight: 600;
+    padding: 10px 2px;
+    position: relative;
+    z-index: 1;
+}
+
+.shop-fas a:hover {
+    color: #fff;
+}
+
+.shop-fas a:after {
+    content: "";
+    position: absolute;
+    background-color: #000;
+    height: 1px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    transition: 0.5s;
+    z-index: -1;
+}
+
+.shop-fas a:hover:after {
+    height: 100%;
+}
+
+.shop-fas img {
+    height: 700px;
+    width: 100%;
+    padding: 20px;
+    padding-bottom: 0;
+    object-position: 0px 0px;
+}
+
+
+/* Bag */
+.bag-shop {
+    padding-top: 20px;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.bag-shop .men img {
+    width: 100%;
+    padding-right: 20px;
+    padding-left: 10px;
+}
+
+.bag-shop .women img {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 10px;
+}
+
+.bag-shop .men, .bag-shop .women {
+    position: relative;
+}
+
+.bag-shop .content h2 {
+    padding-bottom: 10px;
+}
+
+.bag-shop .content {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.bag-shop a {
+    font-size: 1.2;
+    line-height: 2.4;
+    font-weight: 600;
+    padding: 10px 2px;
+    position: relative;
+    z-index: 1;
+}
+
+.bag-shop a:hover {
+    color: #fff;
+}
+
+.bag-shop a:after {
+    content: "";
+    position: absolute;
+    background-color: #000;
+    height: 1px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    transition: 0.5s;
+    z-index: -1;
+}
+
+.bag-shop a:hover:after {
+    height: 100%;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    padding: 20px;
+    height: 250px;
+    width: 100%;
+}
+
+.footer .title {
+    margin-bottom: 20px;
+}
+
+.footer p {
+    font-size: 1.2rem;
+    padding: 5px 0;
+}
+
+.footer .my-info {
+    width: 25%;
+    /* border-right: #ddd 1px solid; */
+}
+
+.footer .my-info .icon {
+    display: flex;
+    margin-top: 50px;
+}
+
+.footer .my-info .icon img{
+    margin-right: 25px;
+}
+
+.footer div:last-child {
+    margin-right: 40px;
+}
+
+/* The Modal (background) */
+.modal-search {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-bag {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 50px;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+  /* Modal Content */
+  .modal-content-search {
+    color: #000;
+    background-color: #fefefe;
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    cursor: default;
+  }
+
+  .modal-content-bag {
+    color: #000;
+    background-color: #fefefe;
+    float: right;
+    height: 100%;
+    width: 500px;
+    cursor: default;
+  }
+
+  /* The Close Button */
+  .close {
+    display: flex;
+    align-items: center;
+    color: #000;
+    font-size: 12px;
+    height: 70px;
+    padding: 0 20px;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .closeBag {
+    padding: 5px;
+  }
+
+  .closeBag:hover,
+  .closeBag:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  #txtSearch {
+    line-height: 30px;
+    font-weight: 600;
+    font-size: 18px;
+    border: none;
+    padding: 20px 0;
+    width: 100%;
+    /* width: 80%; */
+  }
+
+  #txtSearch:focus {
+    outline: none;
+ }
+
+ .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100% - 50px);
+    padding: 20px;
+    padding-bottom: 0;
+    padding-right: 0;
+ }
+
+.bag-list {
+    height: 425px;
+    border-bottom: #ddd 1px solid;
+    overflow: auto;
+}
+
+ .bag-item {
+    display: flex;
+    padding-bottom: 16px;
+ }
+
+ .bag-item  img {
+    width: 175px;
+    height: 220px;
+    object-fit: cover;
+ }
+
+ .bag-item .desc {
+    padding: 2px 0;
+ }
+
+ .btn-remove {
+    height: 20px;
+    display: inline-block;
+    font-weight: 100;
+    border-bottom: 1px #000 solid !important;
+    color: #000;
+    border: none;
+    margin-top: 35px;
+    background-color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+ }
+
+ .total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    padding-right: 20px;
+ }
+
+ .action {
+    padding-right: 20px;
+    padding-bottom: 20px
+ }
+
+ .btn-shopping-bag {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+    line-height: 45px;
+    height: 45px;
+    color: #000;
+    background: #fff;
+    border: #000 1px solid !important;
+    font-weight: 600;
+    border: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.btn-checkout {
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+    width: 100%;
+    line-height: 45px;
+    height: 45px;
+    color: #fff;
+    background: #000;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}

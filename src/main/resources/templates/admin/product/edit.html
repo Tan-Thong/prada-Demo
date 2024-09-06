@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/assets/css/admin.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/product.css}">
+    <title>Home</title>
+</head>
+<body>
+<header class="header">
+    <a href="./Home.html" class="logo">
+        <img th:src="@{/assets/image/Prada-Logo.png}" alt="logo" width="130px">
+    </a>
+    <a href="#">
+        <img th:src="@{/assets/image/user.png}" alt="" width="20px">
+    </a>
+</header>
+
+<div class="main">
+    <div th:replace="/admin/fragments/sidebar :: sidebar"></div>
+
+    <div class="content" >
+        <h2 class="title">Enter product information</h2>
+        <form role="form" method="post" th:action="@{/admin/edit-product}" th:object="${product}" enctype="multipart/form-data">
+            <input type="hidden" name="" id="txtId" class="input" th:field="*{id}">
+            <div class="f-left">
+                <div class="form-session">
+                    <label for="txtName">Product name:</label>
+                    <div class="input-error">
+                        <input type="text" name="txtName" id="txtName" class="input" th:field="*{name}">
+                        <div th:if="${#fields.hasErrors('name')}" class="error" th:errors="*{name}">Name error</div>
+                    </div>
+                </div>
+                <div class="form-session">
+                    <label for="txtGender">Gender:</label>
+                    <select name="txtGender" id="txtGender" class="input" th:field="*{gender}">
+                        <option value="1">Men</option>
+                        <option value="0">Women</option>
+                    </select>
+                </div>
+                <div class="form-session">
+                    <label for="txtCategory">Category:</label>
+                    <select name="txtCategory" id="txtCategory" class="input" th:field="*{category.id}">
+                        <option th:each="category : ${categoryList}" th:value="${category.id}" th:text="${category.name}"></option>
+                    </select>
+                </div>
+                <div class="form-session">
+                    <label for="txtColor">Color:</label>
+                    <select name="txtColor" id="txtColor" class="input" th:field="*{color.id}">
+                        <option th:each="color : ${colorList}" th:value="${color.id}" th:text="${color.name}"></option>
+                    </select>
+                </div>
+                <div class="form-session">
+                    <label for="txtStock">Stock:</label>
+                    <div class="input-error">
+                        <input type="text" name="txtStock" id="txtStock" class="input" th:field="*{stock}">
+                        <div th:if="${#fields.hasErrors('stock')}" class="error" th:errors="*{stock}">Name error</div>
+                    </div>
+                </div>
+                <div class="input-error">
+                    <input type="text" name="txtPrice" id="txtPrice" class="input" th:field="*{price}">
+                    <div th:if="${#fields.hasErrors('price')}" class="error" th:errors="*{price}">Name error</div>
+                </div>
+            </div>
+            <div class="f-right">
+                <div class="form-session">
+                    <label for="txtImage">Select the image:</label>
+                    <input type="file" name="loadImage" id="txtImage" class="input">
+                </div>
+                <div class="form-session">
+                    <label for="txtMaterial">Material:</label>
+                    <div class="input-error">
+                        <input type="text" name="txtMaterial" id="txtMaterial" class="input" th:field="*{material}">
+                        <div th:if="${#fields.hasErrors('material')}" class="error" th:errors="*{material}">Name error</div>
+                    </div>
+                </div>
+                <div class="form-session">
+                    <label for="txtDescription">Description:</label>
+                    <input type="text" name="txtDescription" id="txtDescription" class="input" th:field="*{description}">
+                </div>
+                <button type="submit" class="btn-submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

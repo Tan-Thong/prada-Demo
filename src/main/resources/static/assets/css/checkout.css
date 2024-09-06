@@ -1,0 +1,219 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.disabled-button {
+    pointer-events: none;
+    cursor: default !important;
+}
+
+body.hidden-scroll {
+    overflow: hidden;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: a;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    position: relative;
+    color: #000;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+/* =========================== */
+
+.content {
+    display: flex;
+}
+
+.logo {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.info {
+    background-color: #f7f7f7;
+    width: 1015px;
+    padding: 0 120px;
+    padding-top: 24px;
+}
+
+.contact-info > * {
+    padding: 12px 0;
+}
+
+.shipping-address {
+    margin-top: 65px;
+}
+
+.info-name {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+
+.info-name > input {
+    padding: 0 12px;
+    width: 375px !important;
+    height: 55px;
+    border: #000 1px solid;
+    margin-bottom: 40px;
+}
+
+.input {
+    display: block;
+    padding: 0 12px;
+    width: 100%;
+    height: 55px;
+    border: #000 1px solid;
+    margin-bottom: 40px;
+}
+
+.btn {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 40px;
+}
+
+.btn-submit {
+    text-align: center;
+    width: 180px;
+    height: 55px;
+    color: #fff;
+    background: #000;
+    font-weight: 600;
+    border: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.list-item {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0px;
+    height: 550px;
+    width: calc(100% - 1015px);
+    padding: 80px 60px;
+}
+
+.list-item .list {
+    width: 100%;
+    height: 500px;
+    overflow: auto;
+    -ms-overflow-style: none; /* Ẩn thanh cuộn trên IE và Edge */
+    scrollbar-width: none; /* Ẩn thanh cuộn trên Firefox */
+}
+
+.list-item .item {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.item-info {
+    width: 100%;
+    margin-left: 18px;
+}
+
+.item-info > p{
+    font-size: 14px;
+    margin-top: 14px;
+}
+
+.pay {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0px;
+    width: calc(100% - 1015px) !important;
+    height: 500px;
+    width: 100%;
+    padding: 80px 60px;
+}
+
+.view-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    margin-top: 26px;
+    padding-bottom: 24px;
+    cursor: pointer;
+    border-bottom: 1px #ddd solid;
+}
+
+.pay-total {
+    padding: 24px 0;
+    border-bottom: 1px #ddd solid;
+}
+
+.pay-total-session {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.pay-total .total {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 16px;
+}
+
+.support {
+    margin-top: 24px;
+    font-size: 14px;
+}
+
+.support p {
+    padding-top: 12px;
+}
+
+.support a {
+    text-decoration: underline;
+}
+
+
+
+.modal {
+    display: none;
+    position: absolute; /* Đặt modal ở vị trí tuyệt đối */
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.4); /* Màu nền trong suốt */
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.modal-content {
+    position: absolute;
+    background-color: #fefefe;
+    border: 1px solid #888;
+}
+
+.close {
+    float: right;
+    margin-top: 4px;
+    margin-right: 4px;
+    margin-bottom: 26px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

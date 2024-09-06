@@ -1,0 +1,26 @@
+.content {
+    padding: 0 20px;
+}
+
+.category {
+    border-bottom: #ddd 1px solid;
+}
+
+.footer {
+    border-top: #ddd 1px solid;
+    padding-top: 30px;
+}
+
+.shop {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);;
+    column-gap: 20px;
+    row-gap: 90px;
+}
+
+.img img {
+    max-width: 100%;
+    padding: 0;
+    height: auto;
+}
+

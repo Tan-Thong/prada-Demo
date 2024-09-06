@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/assets/css/admin.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/category.css}">
+    <title>Home</title>
+</head>
+<body>
+<header th:replace="/admin/fragments/header :: header"></header>
+
+<div class="main">
+    <div th:replace="/admin/fragments/sidebar :: sidebar"></div>
+
+    <div class="content" >
+        <h2 class="title">Enter category information</h2>
+        <form role="form" method="post" th:action="@{/admin/edit-category}" th:object="${category}">
+            <input type="hidden" name="" id="txtId" class="input" th:field="*{id}">
+            <div class="form-session">
+                <label for="txtName">Category name:</label>
+                <div class="input-error">
+                    <input type="text" name="" id="txtName" class="input" th:field="*{name}">
+                    <div th:if="${#fields.hasErrors('name')}" class="error" th:errors="*{name}">Name error</div>
+                </div>
+            </div>
+            <div class="form-session">
+                <label for="parent">Parent:</label>
+                <select id="parent" name="parentId" class="select">
+                    <option value="">Null</option>
+                    <option th:each="category : ${list}" th:value="${category.id}" th:text="${category.name}"></option>
+                </select>
+            </div>
+            <div class="form-session">
+                <label for="txtGender">Category name:</label>
+                <select name="txtGender" id="txtGender" class="select" th:field="*{gender}">
+                    <option value="1">Men</option>
+                    <option value="2">Women</option>
+                    <option value="3">Both</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-submit">Update</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

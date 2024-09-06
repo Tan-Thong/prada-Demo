@@ -1,0 +1,52 @@
+.input-error {
+    position: relative;
+}
+
+.error {
+    position: absolute;
+    padding-top: 4px;
+    font-size: 10px;
+    color: red;
+}
+
+.title {
+    margin-bottom: 10px;
+}
+
+form {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: #eee;
+}
+
+.form-session {
+    display: flex;
+    align-items: center;
+}
+
+.form-session label {
+    margin-right: 10px;
+}
+
+.form-session .input {
+    height: 30px;
+    width: 300px;
+}
+
+.form-session .select {
+    height: 30px;
+    width: 150px;
+}
+
+.btn-submit {
+    margin: 10px 0;
+    text-align: center;
+    display: block;
+    line-height: 30px;
+    height: 30px;
+    width: 120px;
+    color: #fff;
+    background: #198754;
+    border-radius: 4px;
+}

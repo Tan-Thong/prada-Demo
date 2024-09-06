@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://wwwthymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/assets/css/admin.css}">
+    <title>Home</title>
+</head>
+<body>
+<header th:replace="/admin/fragments/header :: header"></header>
+<div class="main">
+    <div th:replace="/admin/fragments/sidebar :: sidebar"></div>
+
+    <div class="content" >
+        <h2>List Product</h2>
+        <div class="funtion">
+            <a th:href="@{/admin/add-product}" class="btn-add">Add product</a>
+            <div class="search">
+                <input type="text" name="" id="txtSearch">
+                <a href="" class="btn-search"><img th:src="@{/assets/image/loupe.png}" alt="" height="20px" style="margin-top: 5px;"></a>
+            </div>
+        </div>
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>CATEGORY</th>
+                <th>GENDER</th>
+                <th>COLOR</th>
+                <th>MATERIAL</th>
+                <th>STOCK</th>
+                <th>PRICE</th>
+                <th>IMAGE</th>
+                <th>ACTION</th>
+            </tr>
+            <tr th:each="product : ${list}">
+                <td th:text="${product.id}"></td>
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.category.name}"></td>
+                <td th:if="${product.gender}">Men</td>
+                <td th:if="${!product.gender}">Women</td>
+                <td th:text="${product.color.name}"><div class="circle"></div></td>
+                <td th:text="${product.material}"></td>
+                <td th:text="${product.stock}"></td>
+                <td th:text="${product.price}"></td>
+                <td><img th:src="@{'/uploads/'+${product.image}}" alt="" style="height: 120px;"></td>
+                <td ><a th:href="@{/admin/edit-product/{id}(id=${product.id})}" class="btn-update">Update</a>
+                    <a th:href="@{/admin/delete-product/{id}(id=${product.id})}" class="btn-delete">Delete</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

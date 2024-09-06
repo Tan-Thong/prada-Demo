@@ -1,0 +1,129 @@
+.button-disabled {
+    pointer-events: none; /* Vô hiệu hóa tất cả các sự kiện chuột */
+    opacity: 0.6; /* Làm nút mờ đi để người dùng biết nó bị tắt */
+    cursor: not-allowed; /* Thay đổi con trỏ thành biểu tượng không được phép */
+}
+
+.content {
+    display: flex;
+    min-height: calc(100vh - 145px);
+    background-color: #f7f7f7;
+    padding: 40px 125px;
+    margin-top: 50px;
+    border-bottom: #ddd 1px solid;
+}
+
+.desc {
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.bag-null {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 14px;
+    align-items: center;
+    height: 100%;
+}
+
+.bag {
+    display: block;
+    min-width: 760px;
+    background-color: #fff;
+}
+
+.bag .bag-item {
+    display: flex;
+    width: 720px;
+    padding: 20px 0;
+    margin: 0 20px;
+}
+
+.bag .bag-item + .bag-item {
+    padding-top: 20px;
+    border-top: #ddd 1px solid;
+}
+
+.bag .bag-item > img {
+    width: 290px;
+    height: 360px;
+    object-fit: cover;
+}
+
+.bag .bag-item .desc {
+    padding: 2px 0;
+}
+
+.btn-action {
+    color: #000;
+    display: inline-block;
+    border: none;
+    border-bottom: #000 1px solid;
+    margin-top: 38px;
+    background-color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.subtotal {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 90px;
+    height: 290px;
+    width: 100%;
+    margin-left: 40px;
+    background-color: #fff;
+    padding: 20px;
+}
+
+.sum {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 16px;
+}
+
+.btn-shopping {
+    display: block;
+    line-height: 45px;
+    font-size: 14px;
+    margin-top: 16px;
+    text-align: center;
+    width: 195px;
+    height: 45px;
+    color: #fff;
+    background: #000;
+    font-weight: 600;
+    border: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.btn-submit {
+    display: block;
+    line-height: 45px;
+    font-size: 14px;
+    margin-top: 8px;
+    text-align: center;
+    width: 100%;
+    height: 45px;
+    color: #fff;
+    background: #000;
+    font-weight: 600;
+    border: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.support {
+    font-size: 14px;
+    padding: 0 10px;
+}
+
+.support p {
+    padding-top: 12px;
+}
+
+.support a {
+    text-decoration: underline;
+}

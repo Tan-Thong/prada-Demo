@@ -1,0 +1,79 @@
+<div th:fragment="script-add">
+    <script>
+        // Function to toggle modal display
+        function toggleModal(modalId, displayStyle) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = displayStyle;
+            } else {
+                console.error('No modal found with ID:', modalId);
+            }
+        }
+
+        // Event listener for opening and closing modals using event delegation
+        document.addEventListener('click', function (event) {
+            if (event.target.matches('.btn-add[data-modal]')) {
+                // Open modal
+                const modalId = event.target.getAttribute('data-modal');
+                toggleModal(modalId, 'flex');
+                document.body.classList.add('hidden-scroll');
+            } else if (event.target.matches('.btn-action[data-modal]')) {
+                // Open modal
+                const modalId = event.target.getAttribute('data-modal');
+                toggleModal(modalId, 'flex');
+                document.body.classList.add('hidden-scroll');
+            } else if (event.target.matches('.close[data-modal]')) {
+                // Close modal when clicking on <span> (x)
+                const modalId = event.target.getAttribute('data-modal');
+                toggleModal(modalId, 'none');
+                document.body.classList.remove('hidden-scroll');
+            } else if (event.target.matches('.modal')) {
+                // Close modal when clicking outside of modal content
+                event.target.style.display = 'none';
+                document.body.classList.remove('hidden-scroll');
+            } else if (event.target.matches('.btn-cancel[data-modal]')) {
+                // Close modal when clicking on <button> (cancel)
+                const modalId = event.target.getAttribute('data-modal');
+                toggleModal(modalId, 'none');
+                document.body.classList.remove('hidden-scroll');
+            }
+        });
+
+<!--        document.addEventListener('DOMContentLoaded', function () {-->
+<!--            const incrementButtons = document.querySelectorAll('#increment');-->
+<!--            const decrementButtons = document.querySelectorAll('#decrement');-->
+
+<!--            function updateQuantity(modalId, delta) {-->
+<!--                const modal = document.querySelector(`#${modalId}`);-->
+<!--                const quantitySpan = document.querySelector(`#${modalId} #quantity`);-->
+<!--                const maxQuantity = parseInt(modal.getAttribute('data-max-quantity'));-->
+<!--                console.log('Max Quantity:', maxQuantity);-->
+<!--                let quantity = parseInt(quantitySpan.textContent);-->
+<!--                quantity = Math.max(1, quantity + delta); // Đảm bảo quantity không nhỏ hơn 1-->
+<!--                quantity = Math.min(quantity, maxQuantity); // Đảm bảo quantity không vượt quá maxQuantity-->
+
+<!--                quantitySpan.textContent = quantity;-->
+<!--                quantitySpan.setAttribute('data-quantity', quantity)-->
+<!--            }-->
+
+<!--            incrementButtons.forEach(button => {-->
+<!--                button.addEventListener('click', function () {-->
+<!--                    const modalId = this.getAttribute('data-modal');-->
+<!--                    updateQuantity(modalId, 1);-->
+<!--                });-->
+<!--            });-->
+
+<!--            decrementButtons.forEach(button => {-->
+<!--                button.addEventListener('click', function () {-->
+<!--                    const modalId = this.getAttribute('data-modal');-->
+<!--                    updateQuantity(modalId, -1);-->
+<!--                });-->
+<!--            });-->
+<!--        });-->
+
+<!--        function addToCart(productId) {-->
+<!--            let quantity = document.getElementById('quantity').innerText;-->
+<!--            window.location.href = `/add-to-cart/${productId}?quantity=${quantity}`;-->
+<!--        }-->
+    </script>
+</div>

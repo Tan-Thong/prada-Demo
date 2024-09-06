@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/assets/css/login.css}">
+    <title>Home</title>
+</head>
+<body>
+<header class="header">
+    <a href="#" class="logo">
+        <img th:src="@{/assets/image/Prada-Logo.png}" alt="logo" width="130px">
+    </a>
+</header>
+
+<div class="main">
+    <form th:action="@{/login}" method="post" >
+        <h3 class="title">Enter your accout</h3>
+        <input type="text" name="username" id="txtUsername" placeholder="Username">
+        <input type="password" name="password" id="txtPassword" placeholder="Password">
+        <div class="action">
+            <a th:href="@{/register}" class="btn-sign-up">SIGN UP</a>
+            <button type="submit" class="btn-submit">SIGN IN</button>
+        </div>
+        <hr style="margin-top: 55px;">
+        <div class="decs">
+            <label>Enjoy a unique shopping experience with your personal account</label>
+            <div style="display: flex; align-items: center;" class="sub-desc">
+                <img th:src="@{/assets/image/like.png}" alt="" width="16px">
+                <label>Create a wishlist to save your favorite items</label>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

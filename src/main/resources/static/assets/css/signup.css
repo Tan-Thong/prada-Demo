@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.input-error {
+    position: relative;
+}
+
+.error {
+    bottom: 10px;
+    position: absolute;
+    padding-top: 4px;
+    font-size: 10px;
+    color: red;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: a;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+    height: 100vh;
+}
+
+a {
+    position: relative;
+    color: #000;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+header {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: #ddd 2px solid;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.main {
+    margin: auto;
+    width: 1000px;
+}
+
+.title {
+    margin-top: 60px;
+    margin-bottom: 25px;
+}
+
+.input {
+    padding: 0 12px;
+    width: 455px;
+    height: 55px;
+    border: #000 1px solid;
+    margin-bottom: 25px;
+}
+
+.gender {
+    display: flex;
+    align-items: center;
+    width: 455px;
+    height: 55px;
+    margin-bottom: 25px;
+}
+
+.gender > input {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.gender > label {
+    font-size: 14px;
+}
+
+.btn-submit {
+    text-align: center;
+    width: 455px;
+    height: 55px;
+    color: #fff;
+    background: #000;
+    font-weight: 600;
+    border: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.decs {
+    margin-top: 55px;
+}
+
+.decs > label {
+    display: block;
+    font-size: 14px;
+    padding-bottom: 10px;
+}
+
+.sub-desc > label {
+    padding-left: 10px;
+    font-size: 12px;
+}
